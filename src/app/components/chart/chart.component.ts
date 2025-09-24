@@ -11,13 +11,11 @@ import { chart } from 'highcharts';
 })
 export class ChartComponent {
 
-  lineChart = new Chart({
-    chart: { type: 'line' },
-    title: { text: 'Line Chart' },
-    series: [{ type: 'line', name: 'Line', data: [1, 2, 3, 4, 5] }]
-  });
-
-
+  lineChart =new Chart({
+    chart:{type:'line'},
+    title:{text:'line'},
+    series:[{type:'line',name:'line',data:[1,2,3,4,5,6,7,8,9,10]}]
+  })
   splineChart = new Chart({
     chart: { type: 'spline' },
     title: { text: 'Spline Chart' },
@@ -99,8 +97,8 @@ doughnutChart = new Chart({
   });
 
   radarChart = new Chart({
-    chart: {
-      polar: true,   // ✅ مهم جداً عشان يبقى Radar
+    chart:{
+      polar: true,
       type: 'line'
     },
     title: {
@@ -143,5 +141,5 @@ doughnutChart = new Chart({
       }
     ]
   });
-  
+
 }
