@@ -1,50 +1,48 @@
 import { Component } from '@angular/core';
 import { ChartModule, Chart } from 'angular-highcharts';
+import { chart } from 'highcharts';
 
 @Component({
   selector: 'app-chart',
   standalone: true,
   imports: [ChartModule],
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css']   // ✅
+  styleUrls: ['./chart.component.css']
 })
 export class ChartComponent {
-  // Line chart
+
   lineChart = new Chart({
     chart: { type: 'line' },
     title: { text: 'Line Chart' },
     series: [{ type: 'line', name: 'Line', data: [1, 2, 3, 4, 5] }]
   });
 
-  // Spline chart
+
   splineChart = new Chart({
     chart: { type: 'spline' },
     title: { text: 'Spline Chart' },
     series: [{ type: 'spline', name: 'Spline', data: [1, 3, 2, 4, 6, 3, 5] }]
   });
 
-  // Area chart
   areaChart = new Chart({
     chart: { type: 'area' },
     title: { text: 'Area Chart' },
     series: [{ type: 'area', name: 'Area', data: [1, 2, 3, 6, 8, 5, 7] }]
   });
 
-  // Column chart
+
   columnChart = new Chart({
     chart: { type: 'column' },
     title: { text: 'Column Chart' },
     series: [{ type: 'column', name: 'Column', data: [5, 3, 4, 7, 2] }]
   });
 
-  // Bar chart
   barChart = new Chart({
     chart: { type: 'bar' },
     title: { text: 'Bar Chart' },
     series: [{ type: 'bar', name: 'Bar', data: [2, 3, 5, 7, 6] }]
   });
 
-  // Pie chart
   pieChart = new Chart({
     chart: { type: 'pie' },
     title: { text: 'Pie Chart' },
@@ -60,7 +58,6 @@ export class ChartComponent {
     }]
   });
 
-  // Scatter chart
   scatterChart = new Chart({
     chart: { type: 'scatter' },
     title: { text: 'Scatter Chart' },
@@ -70,4 +67,81 @@ export class ChartComponent {
       data: [[1, 2], [3, 5], [4, 4], [7, 8], [5, 6]]
     }]
   });
+
+doughnutChart = new Chart({
+    chart: {
+      type: 'pie'
+    },
+    title: {
+      text: 'Doughnut Chart Example'
+    },
+    plotOptions: {
+      pie: {
+        innerSize: '50%',
+        dataLabels: {
+          enabled: true,
+          format: '{point.name}: {point.y}'
+        }
+      }
+    },
+    series: [
+      {
+        type: 'pie',
+        name: 'Share',
+        data: [
+          { name: 'Apples', y: 40 },
+          { name: 'Bananas', y: 30 },
+          { name: 'Oranges', y: 20 },
+          { name: 'Grapes', y: 10 }
+        ]
+      }
+    ]
+  });
+
+  radarChart = new Chart({
+    chart: {
+      polar: true,   // ✅ مهم جداً عشان يبقى Radar
+      type: 'line'
+    },
+    title: {
+      text: 'Radar Chart Example'
+    },
+    pane: {
+      size: '80%'
+    },
+    xAxis: {
+      categories: ['Speed', 'Strength', 'Agility', 'Endurance', 'Flexibility'],
+      tickmarkPlacement: 'on',
+      lineWidth: 0
+    },
+    yAxis: {
+      gridLineInterpolation: 'polygon',
+      lineWidth: 0,
+      min: 0
+    },
+    tooltip: {
+      shared: true,
+      pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y}</b><br/>'
+    },
+    legend: {
+      align: 'right',
+      verticalAlign: 'top',
+      layout: 'vertical'
+    },
+    series: [
+      {
+        type: 'line',
+        name: 'Player A',
+        data: [80, 90, 70, 85, 65],
+        pointPlacement: 'on'
+      },
+      {
+        type: 'line',
+        name: 'Player B',
+        data: [65, 75, 85, 60, 80],
+        pointPlacement: 'on'
+      }
+    ]
+  });
+  
 }
